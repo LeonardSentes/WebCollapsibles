@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  transition: all 0.3s;
+  background-color: whitesmoke;
+}
+
+@media screen and (max-width: 600px) {
+  table, th, td {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  table, th, td {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  body {
+    font-size: 8px;
+    text-wrap: break-word;
+    white-space: normal; 
+    width: 240px;
+  }
+}
+
+table { 
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th, td {
+  border: 2px solid #d0333a;
+  padding: 8px;
+  text-align: left;
+  background-color: white; 
+  width: auto;
+  color: #23344c;
+}
+
+tr:first-child th, 
+tr:first-child td {
+  border-top: none;
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 20%; 
+}
+
+th:nth-child(3), td:nth-child(3) {
+  width: 40%;
+}
+
+tr.highlight td {
+  background-color: #d0333a;
+  border: 2px solid white;
+  border-bottom: none;
+  color: white;
+}
+
+tr.highlight td:first-child {
+  border-left: 2px solid #d0333a;
+}
+
+tr.highlight td:last-child {
+  border-right: 2px solid #d0333a;
+}
+
+
+.collapsible {
+  background-color: #23344c ;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: ease-in 0.3s;
+  border-radius: 20px;
+  font-family: Arial, Helvetica, sans-serif ;
+  box-shadow: none;
+  margin-top: 10px;
+  border: none;
+  font-size: 20px;
+}
+
+.active, .collapsible:hover {
+  background-color: #d0333a;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: white;
+  background-color: whitesmoke;
+}
+
+#searchInput {
+  width: calc(50% - 28px);
+  padding: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #23344c;
+  margin: 30px auto; 
+  border: 4px solid #d0333a;
+  font-size: 20px;
+  cursor: text;
+  top: 0%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  position: relative;
+  outline: none;
+}
+
+</style>
+</head>
+<body>
+
+<input type="text" id="searchInput" autocomplete="off" placeholder="Find Person" oninput="searchFunction()">
+
+<button class="collapsible">First Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+    <tr>
+      <td>Name1</td>
+      <td>1</td>
+      <td>example1@mail.com</td>
+    </tr>
+    <tr>
+      <td>Name2</td>
+      <td>2</td>
+      <td>example2@mail.com</td>
+    </tr>
+    <tr>
+      <td>Name3</td>
+      <td>3</td>
+      <td>example3@mail.com</td>
+    </tr>
+    <tr>
+  </table>
+</div>
+
+<button class="collapsible">Second Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name4</td>
+      <td>4</td>
+      <td>example4@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Third Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name5</td>
+      <td>5</td>
+      <td>example5@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Fourth Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name6</td>
+      <td>6</td>
+      <td>example6@mail.com</td>
+    </tr>
+    <tr>
+      <td>Name7</td>
+      <td>7</td>
+      <td>example7@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Fifth Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name8</td>
+      <td>8</td>
+      <td>example8@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Sixth Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name9</td>
+      <td>9</td>
+      <td>example9@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Seventh Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name10</td>
+      <td>10</td>
+      <td>example10@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Eighth Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name11</td>
+      <td>11</td>
+      <td>example11@mail.com</td>
+    </tr>
+    <tr> 
+  </table>
+</div>
+
+<button class="collapsible">Ninth Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name12</td>
+      <td>12</td>
+      <td>example12@mail.com</td>
+    </tr>
+  </table>
+</div>
+
+<button class="collapsible">Tenth Collapsible</button>
+<div class="content">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>E-mail</th>
+    </tr>
+    <tr>
+      <td>Name13</td>
+      <td>13</td>
+      <td>example13@mail.com</td>
+    </tr>
+  </table>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    const coll = document.getElementsByClassName("collapsible");
+
+    for (let i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        const content = this.nextElementSibling;
+        const otherCollapsibles = document.querySelectorAll('.collapsible.active');
+        for (let j = 0; j < otherCollapsibles.length; j++) {
+          const otherContent = otherCollapsibles[j].nextElementSibling;
+          if (otherCollapsibles[j] !== this && otherContent.style.maxHeight) {
+            otherCollapsibles[j].classList.remove("active");
+            otherContent.style.maxHeight = null;
+          }
+        }
+
+        this.classList.toggle("active");
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+          document.body.style.height = "";
+        } else {
+          document.body.style.height = (document.body.scrollHeight + content.scrollHeight) + 'px';
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+});
+
+function searchFunction() {
+    const input = document.getElementById("searchInput").value.trim().toLowerCase();
+    const collapsibles = document.getElementsByClassName("collapsible");
+
+    const isInputEmpty = input === "";
+
+    for (let i = 0; i < collapsibles.length; i++) {
+        const rows = collapsibles[i].nextElementSibling.querySelectorAll("table tr");
+        let found = false;
+        for (let j = 0; j < rows.length; j++) {
+            const row = rows[j];
+            let phoneNumberFound = false;
+            const tds = row.querySelectorAll("td");
+            for (let k = 0; k < tds.length; k++) {
+                const tdText = tds[k].textContent.trim().toLowerCase();
+                if (tdText.startsWith(input)) {
+                    phoneNumberFound = true;
+                    break;
+                }
+            }
+            if (!isInputEmpty && phoneNumberFound) {
+                row.classList.add("highlight");
+                found = true;
+            } else {
+                row.classList.remove("highlight");
+            }
+        }
+
+        if (isInputEmpty) {
+            collapsibles[i].classList.remove("active");
+            collapsibles[i].nextElementSibling.style.maxHeight = null;
+            collapsibles[i].style.display = "block";
+        } else {
+            if (found) {
+                collapsibles[i].classList.add("active");
+                collapsibles[i].nextElementSibling.style.maxHeight = collapsibles[i].nextElementSibling.scrollHeight + "px";
+                collapsibles[i].style.display = "block";
+            } else {
+                collapsibles[i].classList.remove("active");
+                collapsibles[i].nextElementSibling.style.maxHeight = null;
+                collapsibles[i].style.display = "none";
+            }
+        }
+    }
+}
+
+</script>
+</body>
+</html>
